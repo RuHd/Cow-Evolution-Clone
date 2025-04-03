@@ -1,9 +1,13 @@
 'use client'
 
+
 import  "./page.scss";
 import Animal from "@/components/Animal/Animal";
-import { mergeCows } from "@/utils/functions";
+import { mergeCows, resetGame } from "@/utils/functions";
 import { useEffect, useState } from "react";
+import { v4 as uuid } from "uuid";
+
+
 
 export default function Home() {
   const [groupAnimals, setgroupAnimals] = useState([])
@@ -13,7 +17,8 @@ export default function Home() {
   useEffect(() => {
     if (pairSelected.length == 2) {
           debugger
-          mergeCows(pairSelected[0], pairSelected[1], setgroupAnimals, setpairSelected)
+          mergeCows(pairSelected[0], pairSelected[1], setgroupAnimals, setpairSelected, groupAnimals)
+          setscore(prev => prev + 1)
           
     }
     
@@ -23,8 +28,9 @@ export default function Home() {
         let randY = Math.random() * 427 + 90
 
         if(groupAnimals.length < 8) {
-          setgroupAnimals(prev => [...prev, {x: randX, y: randY, mutation: 1}])
+          setgroupAnimals(prev => [...prev, {id: uuid(), x: randX, y: randY, mutation: 1}])
         }
+        
     }, 3000)
   
     return () => {
@@ -46,7 +52,7 @@ export default function Home() {
                     posY={value.y} 
                     groupAnimals = {groupAnimals} 
                     setgroupAnimals = {setgroupAnimals} 
-                    id = {index}
+                    id = {value.id}
                     pairSelected = {pairSelected}
                     setpairSelected = {setpairSelected}
                     mutation={value.mutation}
@@ -56,7 +62,7 @@ export default function Home() {
             }
         </div>
         <footer>
-          <button>Reset</button>
+          <button onClick={() => resetGame(setgroupAnimals,setpairSelected,setscore)}>Reset</button>
           <p>Score: {score}</p>
         </footer>
     </div>

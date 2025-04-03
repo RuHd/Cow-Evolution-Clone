@@ -1,4 +1,5 @@
 .game {
+    position: relative;
     width: 100%;
     height: 100%;
     display: flex;
@@ -6,6 +7,23 @@
     gap: 50px;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    
+    
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1000%;
+        height: 1000%;
+        opacity: .4;
+        background-image: url("../../public/cowIcon.png");
+        animation: scrollLeft 50s infinite;
+       
+    }
+
+  
 
     .field {
         position: relative;
@@ -35,5 +53,15 @@
         p {
             font-size: 45px;
         }
+    }
+}
+
+@keyframes scrollLeft {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: 100%;
     }
 }

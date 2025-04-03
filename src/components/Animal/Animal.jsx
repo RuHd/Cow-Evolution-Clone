@@ -24,17 +24,11 @@ const Animal = ({posX, posY,id,pairSelected, setpairSelected, setgroupAnimals, g
       
       setpairSelected(prev => [...prev,{id: id, x: pos.x, y: pos.y, mutation: mutation}])
     } 
-    
-    // if (pairSelected.length == 2) {
 
-    //   mergeCows(pairSelected[0], pairSelected[1], setgroupAnimals, setpairSelected)
-    //   return
-    // }
-
-    setTimeout(() => {
-      setisClicked(false)
-      setpairSelected([])
-    }, 10000)
+    // setTimeout(() => {
+    //   setisClicked(false)
+    //   setpairSelected([])
+    // }, 5000)
   }
 
   useEffect(() => {
