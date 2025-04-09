@@ -8,28 +8,20 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    
-    
-    &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 1000%;
-        height: 1000%;
-        opacity: .4;
-        background-image: url("../../public/cowIcon.png");
-        animation: scrollLeft 50s infinite;
-       
-    }
 
-  
+    &>h1 {
+        -webkit-text-stroke-color: black;
+        -webkit-text-stroke-width: 1px;
+        color: white;
+        font-size: 5em;
+        letter-spacing: 5px;
+    }
 
     .field {
         position: relative;
         width: 788px;
         height: 607px;
-        background-image: url("../../public/field.jpg");
+        background-image: url("../../public/arena.png");
         background-repeat: no-repeat;
     }
 
@@ -45,9 +37,11 @@
             text-align: center;
             color: white;
             background-color: #F80101;
+            border-radius: 20px;
             padding: 25px;
             font-size: 50px;
-            font-family: var("--font-jersey-10");
+            font-family: var(--font-tiny5);
+            letter-spacing: 5px;
         }
 
         p {
@@ -56,12 +50,3 @@
     }
 }
 
-@keyframes scrollLeft {
-    0% {
-        left: 0;
-    }
-
-    100% {
-        left: 100%;
-    }
-}

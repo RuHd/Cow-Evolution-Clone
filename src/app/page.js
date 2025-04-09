@@ -1,6 +1,7 @@
 'use client'
 
 
+import InfiniteImageRoll from "@/components/InfiniteImageRoll/InfiniteImageRoll";
 import  "./page.scss";
 import Animal from "@/components/Animal/Animal";
 import { mergeCows, resetGame } from "@/utils/functions";
@@ -17,15 +18,17 @@ export default function Home() {
   useEffect(() => {
     if (pairSelected.length == 2) {
           debugger
-          mergeCows(pairSelected[0], pairSelected[1], setgroupAnimals, setpairSelected, groupAnimals)
+          mergeCows(pairSelected[0], pairSelected[1], setgroupAnimals, setpairSelected, groupAnimals, setscore)
+
+          setpairSelected([])
           setscore(prev => prev + 1)
           
+          
     }
-    
-        
+  
     const interval = setInterval(() => {
-        let randX = Math.random() * 608 + 90
-        let randY = Math.random() * 427 + 90
+        let randX = Math.random() * 484 + 200
+        let randY = Math.random() * 303 + 200
 
         if(groupAnimals.length < 8) {
           setgroupAnimals(prev => [...prev, {id: uuid(), x: randX, y: randY, mutation: 1}])
@@ -37,34 +40,35 @@ export default function Home() {
       clearInterval(interval)
     }
   }, [groupAnimals, pairSelected])
-  
-  console.log(pairSelected)
-  return (
-    <div className="game">
-        <h1>Cow Evolution Clone</h1>
-        <div className="field">
-            {
-              groupAnimals.map((value,index) => {
-                return (
-                  <Animal 
-                    key={index} 
-                    posX={value.x} 
-                    posY={value.y} 
-                    groupAnimals = {groupAnimals} 
-                    setgroupAnimals = {setgroupAnimals} 
-                    id = {value.id}
-                    pairSelected = {pairSelected}
-                    setpairSelected = {setpairSelected}
-                    mutation={value.mutation}
-                  />
-                )
-              })
-            }
-        </div>
-        <footer>
-          <button onClick={() => resetGame(setgroupAnimals,setpairSelected,setscore)}>Reset</button>
-          <p>Score: {score}</p>
-        </footer>
-    </div>
+
+    return (
+    <>
+      <div className="game">
+          <h1>Cow Evolution Clone</h1>
+          <div className="field">
+              {
+                groupAnimals.map((value,index) => {
+                  return (
+                    <Animal 
+                      key={index} 
+                      posX={value.x} 
+                      posY={value.y} 
+                      groupAnimals = {groupAnimals} 
+                      setgroupAnimals = {setgroupAnimals} 
+                      id = {value.id}
+                      pairSelected = {pairSelected}
+                      setpairSelected = {setpairSelected}
+                      mutation={value.mutation}
+                    />
+                  )
+                })
+              }
+          </div>
+          <footer>
+            <button onClick={() => resetGame(setgroupAnimals,setpairSelected,setscore)}>Reset</button>
+            <p>Score: {score}</p>
+          </footer>
+      </div>
+    </>
   );
 }

@@ -1,14 +1,3 @@
-// - Seleção de 2 vacas para mutação
-
-// 1- Clicar na vaca para selecionar
-//   1- Clicar na vaca
-//   2- Congelar o movimento da vaca
-//   3- Verificar se a vaca ja foi selecionada, se True, sai da função, 
-//   4- Verificar se é a segunda vaca selecionada, se True, verificar se ambas possuem a mesma foto ( mutação). Se TRUE, Fazer a fusão, senão, retorna
-//   5 - Se TRUE para vacas com mesma foto, calcular distancia entre as duas e gerar uma nova 
-//   6-  Apagar as duas vacas
-// 2- Clicar em outra vaca
-// 3- tirar as duas vacas e gerar uma nova com uma nova mutação
 
 export const defineAxis = () => Math.floor(Math.random() * 2) // Function to decide direction of animal movements and the axis
 
@@ -16,21 +5,21 @@ export const defineAxis = () => Math.floor(Math.random() * 2) // Function to dec
 export const mergeCows = (cow1, cow2, setgroupAnimals, setpairSelected, groupAnimals) => {
     
     if (cow1.mutation == cow2.mutation) {
-        let posX = Math.abs(cow1.x - cow2.x)
-        let posY = Math.abs(cow1.y - cow2.y)
+        let posX = Math.abs(cow1.x + cow2.x) / 2
+        let posY = Math.abs(cow1.y + cow2.y) / 2
 
         setgroupAnimals(prev => prev.filter(value => value.id !== cow1.id))
         setgroupAnimals(prev => prev.filter(value => value.id !== cow2.id))
 
+
         setgroupAnimals(prev => [...prev, {id: prev.length - 1, x: posX, y: posY, mutation: cow1.mutation + 1}])
-        setpairSelected([])
+        
     }      
 }
 
 // Function to reset score and animal group
 
 export const resetGame = (setgroupAnimals, setpairSelected, setscore) => {
-    debugger
     setgroupAnimals([])
     setpairSelected([])
     setscore(0)

@@ -6,9 +6,8 @@ import cow1 from '../../../public/cow1.webp'
 import cow2 from '../../../public/cow2.webp'
 
 
-
 const dist = 20
-const borderLimit = 688
+const borderLimit = 636
 
 const Animal = ({posX, posY,id,pairSelected, setpairSelected, setgroupAnimals, groupAnimals, mutation}) => {
 
@@ -19,16 +18,13 @@ const Animal = ({posX, posY,id,pairSelected, setpairSelected, setgroupAnimals, g
   const addCowtoPair = () => {
     
     if ( pairSelected.length == 0 || (pairSelected.length < 2 && pairSelected.some(value => value.id !== id))) {
-     
+     debugger
       setisClicked(true)
       
       setpairSelected(prev => [...prev,{id: id, x: pos.x, y: pos.y, mutation: mutation}])
-    } 
 
-    // setTimeout(() => {
-    //   setisClicked(false)
-    //   setpairSelected([])
-    // }, 5000)
+
+    } 
   }
 
   useEffect(() => {
@@ -50,11 +46,11 @@ const Animal = ({posX, posY,id,pairSelected, setpairSelected, setgroupAnimals, g
         }
         
         // Check border collisions
-        if (newPosX < borderLimit && newPosX > 100) { // Right/Left Edges
+        if (newPosX < 636 && newPosX > 152) { // Right/Left Edges
             setpos({...pos,x: newPosX})
         } 
   
-        if (newPosY  < 507 && newPosY > 100) { // Top / Bottom Edges
+        if (newPosY  < 507 && newPosY > 152) { // Top / Bottom Edges
           setpos({...pos,y: newPosY})
         }
   
@@ -69,8 +65,8 @@ const Animal = ({posX, posY,id,pairSelected, setpairSelected, setgroupAnimals, g
   }, [pos, isClicked])
   
   return (
-    <div className={`Animal ${isClicked ? "clickedAnimal" :""}`} style={{left: pos.x, top: pos.y}} onClick={() => addCowtoPair()}>
-      <Image src = {mutation == 1 ? cow1 : cow2} width={100} height={70} alt='Cow'/>
+    <div className={`Animal`} style={{left: pos.x, top: pos.y}} onClick={() => addCowtoPair()}>
+      <Image src = {mutation == 1 ? cow1 : cow2} width={130} height={70} alt='Cow'/>
     </div>
   )
 }
