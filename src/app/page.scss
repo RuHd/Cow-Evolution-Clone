@@ -4,17 +4,30 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 20px;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow-x: hidden;
+
+
 
     &>h1 {
-        -webkit-text-stroke-color: black;
-        -webkit-text-stroke-width: 1px;
-        color: white;
+        -webkit-background-clip: text;
+        background-clip: text;
+        background-image: url(../../public/woodTexture.jpg);
+        color: transparent;
         font-size: 5em;
         letter-spacing: 5px;
+        font-family: var(--font-barrio);
+        text-shadow: 7px 7px 7px rgba(0, 0, 0, 0.103);
+    }
+
+    &>h2 {
+        position: absolute;
+        right: 1%;
+        font-size: 3em;
+        color: black;
+
     }
 
     .field {
@@ -30,8 +43,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 50px;
-        width: 788px;
+       
 
         button {
             text-align: center;
@@ -42,10 +54,6 @@
             font-size: 50px;
             font-family: var(--font-tiny5);
             letter-spacing: 5px;
-        }
-
-        p {
-            font-size: 45px;
         }
     }
 }

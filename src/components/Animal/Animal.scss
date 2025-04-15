@@ -3,14 +3,13 @@
     width: 100px;
     height: 70px;
    
-    transition: 2s ease-out;
+    transition: left 2s ease-out,top 2s ease-out ;
 
     &:hover {
         cursor: pointer;
-        scale: 1.1;
     }
 
-    &>* {
+    &>*:nth-child(2) {
         width: 100%;
         height: 100%;
         object-fit: contain;
@@ -27,12 +26,39 @@
         border-radius: 50%;
         
     }
+
+    .arrow {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-30%);
+        fill: red;
+
+        animation-name: arrowUpandDown;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: ease-out;
+        animation-fill-mode: both;
+  
+    }
 }
 
-.clickedAnimal {
-    scale: 1.5;
+.clicked {
+    border: 2px solid red;
+}
 
-    &:hover {
-       scale: 1.5;
+.minotaur {
+    scale: 1.5;
+}
+
+
+@keyframes arrowUpandDown {
+    0% {
+        transform: translateY(5px);
+    }
+
+    100% {
+        transform: translateY(-5px);
     }
 }

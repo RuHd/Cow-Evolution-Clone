@@ -1,0 +1,123 @@
+.Modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../../../public/space.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: 1000;
+
+    font-size: 2.5em;
+
+    &>h2 {
+        color: white;
+    }
+
+    &>section {
+        border-radius: 50%;
+        position: relative;
+
+        animation: closer 2s ease-in-out alternate-reverse infinite;
+        
+    }
+
+    &>section::after {
+        content: '';
+        position: absolute;
+        top: 10px;
+        right: 50%;
+        transform: translateX(50%);
+  
+        width: 95%;
+        height: 95%;
+        border-radius: 50%;
+        
+        box-shadow: 20px 20px 100px white,
+                    20px 20px 110px white;
+        z-index: -10;
+    }
+
+    button {
+        position: relative;
+        background-color: transparent;
+        color: white;
+        border: none;
+        padding: 10px;
+        font-size: .8em;
+
+        &::after {
+            position: absolute;
+            content: "";
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 10px;
+            height: 5px;
+            width: 0;
+            background-color: white;
+            transition: .3s;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:hover::after {
+            width: 50px;
+        }
+    }
+}
+
+.divineCow {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    scale: 1;
+    z-index: 100;  
+}
+
+.comet {
+    position: absolute;
+    top: 10px;
+    right: -50px;
+    width: 300px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    rotate: -45deg;
+
+    animation: fallStar 1.45s both ease-out ;
+
+    box-shadow: 5px 5px 100px white;
+}
+
+@keyframes fallStar {
+    from {
+        transform: translate(inherit, inherit);
+        opacity: 1;
+    }
+
+    to {
+        transform: translate(-500%, -500%);
+        opacity: 0;
+
+    }
+}
+
+@keyframes closer {
+    from {
+        scale: 1;
+    }
+
+    to {
+        scale: 1.05;
+    }
+}
+
