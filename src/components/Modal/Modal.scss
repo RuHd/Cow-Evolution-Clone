@@ -16,6 +16,8 @@
 
     font-size: 2.5em;
 
+    animation: slideDown .5s 2s both ease-out;
+
     &>h2 {
         color: white;
     }
@@ -118,6 +120,16 @@
 
     to {
         scale: 1.05;
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100vh);
+    }
+
+    100% {
+        transform: translateY(0vh);
     }
 }
 

@@ -51,7 +51,6 @@ export default function Home() {
       { messageOn && <AlertMsg setmessageOn = {setmessageOn}/>}
 
           <h1>Cow Evolution Clone</h1>
-          <h2>Get 10 Minotaurs to ascend</h2>
           <div className="field">
             
               {
@@ -72,9 +71,8 @@ export default function Home() {
                 })
               }
           </div>
-          <footer>
-            <button onClick={() => resetGame(setgroupAnimals,setpairSelected,setnumMinotaurs)}>Reset</button>
-          </footer>
+          <button onClick={() => resetGame(setgroupAnimals,setpairSelected,setnumMinotaurs)}>Reset</button>
+          <h2>Get 10 Minotaurs to ascend</h2>
       </div>
     </>
   );
