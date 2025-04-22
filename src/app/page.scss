@@ -25,15 +25,20 @@
 
     &>h2 {
         position: absolute;
-        right: 1%;
-        font-size: 3em;
+        left: 1%;
+        bottom: 0;
+        font-size: 1.8em;
         color: white;
+        text-align: center;
 
+        &>* {
+            transform: translateY(20%);
+        }
     }
 
     .field {
         position: relative;
-        width: 788px;
+        width: 798px;
         height: 700px;
         background-image: url("../../public/arena.png");
         background-size: cover;
@@ -46,9 +51,10 @@
         color: white;
         background-color: #F80101;
         border-radius: 20px;
+        scale: .8;
         padding: 25px;
         font-size: 50px;
-        font-family: var(--font-tiny5);
+        // font-family: var(--font-tiny5);
         letter-spacing: 5px;
     }
     
@@ -65,6 +71,7 @@
         &>h2 {
             position: absolute;
             right: 0;
+            color: white;
         }
     }
 

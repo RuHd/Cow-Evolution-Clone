@@ -30,8 +30,8 @@
     .arrow {
         position: absolute;
         top: -30px;
-        left: 50%;
-        transform: translateX(-30%);
+        left: 30%;
+        transform: translate(0,30px);
         fill: red;
 
         animation-name: arrowUpandDown;
@@ -39,7 +39,6 @@
         animation-iteration-count: infinite;
         animation-direction: alternate;
         animation-timing-function: ease-out;
-        animation-fill-mode: both;
   
     }
 }
@@ -55,10 +54,10 @@
 
 @keyframes arrowUpandDown {
     0% {
-        transform: translateY(5px);
+        transform: translate(0,5px);
     }
 
     100% {
-        transform: translateY(-5px);
+        transform: translate(0,-5px);
     }
 }

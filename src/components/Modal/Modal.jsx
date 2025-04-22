@@ -35,7 +35,7 @@ const Modal = ({func}) => {
             <Image src={cowDivine} alt='Divine Cow Image' className='divineCow'/>
         </section>
         <h2>A new meaning of existence has been created</h2>
-        <button onClick={() => resetGame(func.setgroupAnimals, func.setpairSelected, func.setnumMinotaurs)}>Restart the Game</button>
+        <button onClick={() => window.location.reload()}>Restart the Game</button>
     </div>
   )
 }

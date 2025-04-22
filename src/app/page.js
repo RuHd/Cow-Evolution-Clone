@@ -8,9 +8,7 @@ import { v4 as uuid } from "uuid";
 import useSound from "use-sound";
 import AlertMsg from "@/components/Popups/AlertMsg";
 import Modal from "@/components/Modal/Modal";
-// import song from "../../public/song.mp3"
-
-
+import { AiOutlineTrademark } from "react-icons/ai";
 
 export default function Home() {
   const [play] = useSound()
@@ -18,6 +16,7 @@ export default function Home() {
   const [pairSelected, setpairSelected] = useState([])
   const [messageOn, setmessageOn] = useState(false)
   const [numMinotaurs, setnumMinotaurs] = useState(0)
+  const [date, setdate] = useState(new Date())
 
   useEffect(() => {
     if (pairSelected.length == 2) {
@@ -72,7 +71,7 @@ export default function Home() {
               }
           </div>
           <button onClick={() => resetGame(setgroupAnimals,setpairSelected,setnumMinotaurs)}>Reset</button>
-          <h2>Get 10 Minotaurs to ascend</h2>
+          <h2>{<AiOutlineTrademark/>} Made By Ruan Mesquita {date.getFullYear()}</h2>
       </div>
     </>
   );

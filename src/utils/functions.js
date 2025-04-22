@@ -3,7 +3,6 @@ import { v4 as uuid } from "uuid"
 export const defineAxis = () => Math.floor(Math.random() * 2) // Function to decide direction of animal movements and the axis
 
 export const mergeCows = (cow1, cow2, setgroupAnimals, setmessageOn, setnumMinotaurs) => {
-debugger
 
 if (cow1.mutation == cow2.mutation && cow1.mutation < 4) {
     let posX = cow2.x

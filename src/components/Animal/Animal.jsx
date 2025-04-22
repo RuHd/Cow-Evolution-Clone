@@ -8,8 +8,6 @@ import cow3 from '../../../public/cow3.png'
 import cow4 from '../../../public/cow4.webp'
 import { IoMdArrowDropdown } from "react-icons/io";
 
-
-
 const dist = 20
 const borderLimit = 636
 
