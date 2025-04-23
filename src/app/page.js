@@ -5,13 +5,13 @@ import Animal from "@/components/Animal/Animal";
 import { mergeCows, resetGame } from "@/utils/functions";
 import { useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
-import useSound from "use-sound";
 import AlertMsg from "@/components/Popups/AlertMsg";
+import Image from "next/image";
 import Modal from "@/components/Modal/Modal";
 import { AiOutlineTrademark } from "react-icons/ai";
+import minotaurIcon from '../../public/minotaurIcon.png'
 
 export default function Home() {
-  const [play] = useSound()
   const [groupAnimals, setgroupAnimals] = useState([])
   const [pairSelected, setpairSelected] = useState([])
   const [messageOn, setmessageOn] = useState(false)
@@ -40,7 +40,7 @@ export default function Home() {
       clearInterval(interval)
     }
   }, [groupAnimals, pairSelected, messageOn])
-  console.log(numMinotaurs)
+
     return (
     <>
       { numMinotaurs == 5 && <Modal func = {{setgroupAnimals,setpairSelected,setnumMinotaurs}}/>}
@@ -48,7 +48,10 @@ export default function Home() {
       <div className="game">
       
       { messageOn && <AlertMsg setmessageOn = {setmessageOn}/>}
-
+          <section className="minotaur-count-section">
+            <Image src={minotaurIcon} alt="Minotaur Icon" className="minotaurIcon" />
+            <span>x{numMinotaurs}</span>
+          </section>
           <h1>Cow Evolution Clone</h1>
           <div className="field">
             

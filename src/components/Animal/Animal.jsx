@@ -9,21 +9,24 @@ import cow4 from '../../../public/cow4.webp'
 import { IoMdArrowDropdown } from "react-icons/io";
 
 const dist = 20
-const borderLimit = 636
 
 const Animal = ({posX, posY,id,pairSelected, setpairSelected, setgroupAnimals, groupAnimals, mutation}) => {
 
   const [pos, setpos] = useState({x: Math.floor(posX), y: Math.floor(posY)})
   const [isClicked, setisClicked] = useState(false)
-
   
   const addCowtoPair = () => {
+
     // Check if the clicked animal is enabled to be merged
     if ( pairSelected.length == 0 || (pairSelected.length < 2 && pairSelected.some(value => value.id !== id))) {
       setisClicked(true)
       setpairSelected(prev => [...prev,{id: id, x: pos.x, y: pos.y, mutation: mutation}])
 
-      if (pairSelected.length == 2) setisClicked(false)
+      
+    } 
+    if (pairSelected.length == 2) {
+
+      setisClicked(false)
     } 
   }
 
@@ -57,7 +60,11 @@ const Animal = ({posX, posY,id,pairSelected, setpairSelected, setgroupAnimals, g
   
       }, 200)
 
-    } else setTimeout(() => setisClicked(false), 2000)
+    } else {
+      
+      clearInterval(interval)
+      setTimeout(() => setisClicked(false), 3000)
+    }
   
     return () => {
       clearInterval(interval)
